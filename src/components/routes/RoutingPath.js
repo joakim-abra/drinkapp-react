@@ -1,11 +1,11 @@
 const homeView = "/"
 const contact ="/contact"
 const profile ="/profile"
-const signinView = "/signin"
+const signInView = "/signin"
 
 export default{
 homeView,
 contact,
 profile,
-signinView,
+signInView,
 }
