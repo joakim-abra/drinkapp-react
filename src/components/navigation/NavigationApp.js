@@ -36,7 +36,7 @@ export const NavigationApp = () => {
                   <Link className="link" to={RoutingPath.homeView}>Home</Link>
                 </li>
                 <li className="item">
-                  <Link className="link" to={RoutingPath.signinView}>Sign in</Link>
+                  <Link className="link" to={RoutingPath.signInView}>Sign in</Link>
                 </li>
                 <div className="nav-desktop-login">
                  <Profile />
