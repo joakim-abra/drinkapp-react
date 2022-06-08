@@ -1,15 +1,17 @@
 import './App.css';
 import { Routing } from './components/routes/Routes';
 import { NavigationApp } from './components/navigation/NavigationApp';
+import { UserProvider } from './shared/provider/UserProvider';
 
 
 
 function App () {
 return (
-  
-  <Routing>
-    <NavigationApp />
-  </Routing>
+  <UserProvider>
+   <Routing>
+     <NavigationApp />
+   </Routing>
+  </UserProvider>
 
 )
 }

@@ -1,24 +1,33 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-
-
-
-
+import axios from "axios";
 
 
 export const SignInView = () => {
-    const [name, setName] = useState("")
-    const [password, setPassword] = useState()  
-    const navigate = useNavigate();
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState()
     
-    const logIn = () => {
-        setAuthenticatedUser(username); 
-        localStorage.setItem(LocalStorage.username, username);
-        navigate(-1); 
-    }
+      
+    const  logIn = async () => {
 
-    return (
-        <div className="login">
+        axios.post('https://localhost:44318/api/login',{
+            username: username,
+            password: password
+        })
+        .then((response) => {
+            console.log(response.data)
+        })
+        .catch((error) => {
+            console.log(error)
+            console.log(error.response)
+        })
+            
+            
+            
+            
+        };
+        
+        return (
+            <div className="login">
         <h1>Please Log In</h1>
         <form>
           <label>
@@ -30,10 +39,9 @@ export const SignInView = () => {
             <input type="password" onChange={(event) => setPassword(event.target.value)} />
           </label>
           <div>
-            <button type="submit">Submit</button>
+            <button onClick={() => logIn()}>Submit</button>
           </div>
         </form>
       </div>
-    );
-};
-
+      )
+}    

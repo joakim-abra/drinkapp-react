@@ -28,10 +28,7 @@ export const NavigationApp = () => {
         
           return (
             <nav className="nav-desktop">
-              <ul className="nav-desktop-list">
-                  <li className="item">
-                  <Link className="link" to={RoutingPath.contact} >contact</Link>
-                </li>  
+              <ul className="nav-desktop-list"> 
                 <li className="item">
                   <Link className="link" to={RoutingPath.homeView}>Home</Link>
                 </li>
