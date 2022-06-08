@@ -3,6 +3,7 @@ import { HomeView } from "../../view/homeview/HomeView";
 import { Profile } from "../navigation/profile/Profile";
 import RoutingPath from "./RoutingPath";
 import {SignInView} from "../../view/signinview/SignInView"
+import { RegisterView } from "../../view/registerview/RegisterView";
 
 export const Routing = ({children}) => {
     return (
@@ -14,6 +15,8 @@ export const Routing = ({children}) => {
                 <Route path={RoutingPath.profile} element={<Profile/>}/>
 
                 <Route path={RoutingPath.signInView} element={<SignInView/>}/>
+
+                <Route path={RoutingPath.registerView} element={<RegisterView/>}/>
             </Routes>
             
             
