@@ -8,7 +8,8 @@ return (
 <Modal.Header closeButton className="modal-header">
   <Modal.Title><b>{drink?.strDrink}</b></Modal.Title>
 </Modal.Header>
-<Modal.Body className="modal-body" >
+<Modal.Body  className="modal-bg">
+  <img src={`${drink?.strDrinkThumb}`} alt="Cocktail pic" className="modal-img" />
     <b>Glass</b>
   <p>{drink?.strGlass}</p>
   <b>Ingredients</b>
@@ -37,3 +38,6 @@ return (
 </Modal.Footer>*/}
 </Modal>
 )}
+
+
+// style={{backgroundImage:`url(${drink?.strDrinkThumb})`}}
