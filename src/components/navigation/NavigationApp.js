@@ -49,8 +49,8 @@ export const NavigationApp = () => {
               <Nav>
               <NavDropdown id="collasible-nav-dropdown" title="Profile">
                   <NavDropdown.Item href="/signin">Log in</NavDropdown.Item>
-                  <NavDropdown.Item href="/signin">Edit profile</NavDropdown.Item>
-                  {/* <NavDropdown.Item onClick={() => logOut()} href="/">Log out</NavDropdown.Item> */}
+                  <NavDropdown.Item href="/register">Register</NavDropdown.Item>
+                   <NavDropdown.Item /*onClick={() => logOut()} */href="/">Log out</NavDropdown.Item> 
                 </NavDropdown>
               </Nav>
 

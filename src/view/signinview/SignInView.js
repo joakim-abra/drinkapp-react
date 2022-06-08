@@ -28,7 +28,7 @@ export const SignInView = () => {
         
         return (
             <div className="login">
-        <h1>Please Log In</h1>
+        <h1>Log In</h1>
         <form>
           <label>
             <p>Username</p>
