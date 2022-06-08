@@ -32,7 +32,6 @@ export const SignInView = () => {
         "password":password
       }
       try{
-        console.log()
         const {data} = await DrinkAPIService.logIn(login);
         console.log(data)
         if(data!==null)
@@ -66,11 +65,7 @@ export const SignInView = () => {
       };
 
       const Incorrect = () => {
-        return(badlogin?(
-          <div>
-            Incorrect login!
-          </div>) : <></>
-        )
+        return badlogin?(<div> Incorrect login!</div>) : <></>
       }
 
         
