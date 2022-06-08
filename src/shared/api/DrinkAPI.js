@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const DrinkApi = axios.create({
-    baseURL: 'https://localhost:44318/',
+    baseURL: 'https://localhost:44318/api',
         // baseURL: 'http://www.thecocktaildb.com/'
 });
 
