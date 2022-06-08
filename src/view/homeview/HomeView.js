@@ -22,7 +22,7 @@ const findDrinkByName = async () => {
 
 const findDrinkByIngredient = async () => {
   try{
-  const {data} = await DrinkAPIService.getDrinksByIngredient(input)
+  const {data} = await DrinkAPIService.getDrinksByIngredientName(input)
   setServerData(data.drinks)
   console.log(data)
   }
@@ -30,6 +30,29 @@ const findDrinkByIngredient = async () => {
       console.log(error)
   }
 } 
+
+
+
+
+const [selectIngredientButton, setSelectIngredientButton] = useState(false)
+
+const getDrinksByID = async () => {
+  try{
+  const {data} = await DrinkAPIService.getDrinksByID(input)
+  setServerData(data.drinks)
+  console.log(data)
+  }
+  catch (error) {
+      console.log(error)
+  }
+}
+
+
+
+
+
+
+
 
 const displayData = () => { return (
   <div> {serverData.map((drink) => (
@@ -40,6 +63,8 @@ const displayData = () => { return (
     </div>  
     )};
 
+
+
     return (
         <main>
             <section>
@@ -47,10 +72,11 @@ const displayData = () => { return (
                 <input placeholder="Enter text" onChange={(event) => setInput(event.target.value)}/>
                 <button onClick={() => findDrinkByName(input)}>Search by name</button>
                 <button onClick={() => findDrinkByIngredient(input)}>Search by ingredient</button>
-                
                 {displayData()}
             </section>
         </main>
     )
-
 } 
+
+
+//<button onClick={() => { findDrinkByIngredient(input); setSelectIngredientButton(true)}}>Search by ingredient</button>
