@@ -1,7 +1,7 @@
-const username = "username";
-const password = "password";
+const user = {
+  Id:'',
+  Username : '',
+  Password : ''
+}
 
-export default {
-  username,
-  password,
-};
+export default user;
