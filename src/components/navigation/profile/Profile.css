@@ -1,0 +1,9 @@
+.profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    float: right;
+}
+
+
