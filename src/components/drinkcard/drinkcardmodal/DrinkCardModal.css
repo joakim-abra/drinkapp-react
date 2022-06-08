@@ -1,8 +1,14 @@
-.modal-body {
-    background-color: chartreuse;
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/P1030323.JPG/1024px-P1030323.JPG")
+.modal-header {
+    background-color:lightblue;
+    color:white;
 }
 
-.modal-header {
-    background-color: aqua;
+.modal-img {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.modal-bg {
+    background-color: aliceblue;
 }
