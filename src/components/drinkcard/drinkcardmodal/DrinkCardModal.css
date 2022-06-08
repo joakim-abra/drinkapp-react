@@ -1,0 +1,8 @@
+.modal-body {
+    background-color: chartreuse;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/P1030323.JPG/1024px-P1030323.JPG")
+}
+
+.modal-header {
+    background-color: aqua;
+}

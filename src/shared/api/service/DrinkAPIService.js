@@ -5,4 +5,8 @@ const getDrinksByName = (name)=>{
     // return http.get(`api/json/v1/1/search.php?s=${name}`);
 }
 
-export default {getDrinksByName};
+const getDrinksByIngredient = (ingredient) => {
+    return http.get(`/api/Drinks/GetDrinksByIngredient?ingredient=${ingredient}`);
+}
+
+export default {getDrinksByName, getDrinksByIngredient};
