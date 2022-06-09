@@ -1,8 +1,10 @@
+import "../registerview/RegisterView.css"
 import DrinkAPIService from "../../shared/api/service/DrinkAPIService";
 import { useState, useContext } from "react";
 import {UserContext} from "../../shared/provider/UserProvider"
 import { useNavigate } from "react-router-dom";
 import LocalStorage from "../../shared/storage/LocalStorage";
+
 
 export const RegisterView = () => {
   const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext);
@@ -55,20 +57,25 @@ export const RegisterView = () => {
         <div>
           Username already in use!
         </div> : <></>
-      
-    }
+        }
 
 
     return (
-        <div className="login">
-    <h1>Register</h1>
-    <form>
+    <div className="login">
+         <h1 className="h1-register">Register</h1>
       <label>
+        <input className="input-username2" placeholder="Enter Username" type="Text" /*onChange={(event) => setUsername(event.target.value)}*//>
         <p>Username</p>
         <input type="Text" onChange={(event) => setUsername(event.target.value)}/>
       </label>
+      <br/>
       <label>
-        <p>Password</p>
+        <input className="input-password2" placeholder="Enter Password" type="Text" /*onChange={}"password" /*onChange={(event) => setPassword(event.target.value)}*/ />
+      </label>
+      <div className="div-btn2">
+        <button>register</button>
+      </div> 
+       <p>Password</p>
         <input type="password" onChange={(event) => setPassword(event.target.value)}/>
       </label>
       <div>
