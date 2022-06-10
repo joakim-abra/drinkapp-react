@@ -21,6 +21,9 @@ export const SignInView = () => {
       try{
         const {data} = await DrinkAPIService.logIn(login);
           localStorage.setItem(LocalStorage.Id, data?.id)
+          localStorage.setItem(LocalStorage.Username, data?.username)
+          setAuthenticatedUser(true)
+          console.log(authenticatedUser)
           return true;
         
       }
@@ -35,14 +38,12 @@ export const SignInView = () => {
       const LogIn = async () => {
         if(await CheckLogIn() === true)
         { 
-            setAuthenticatedUser(true)
-            console.log(authenticatedUser)
             setBadlogin(false); 
             navigate("/");
         }
         else
         {
-          setBadlogin(true);
+            setBadlogin(true);
         }
 
       };
@@ -67,7 +68,7 @@ export const SignInView = () => {
           </label>
           
           <div className="div-btn">
-            <button className="btn-signin" onClick={(event) =>{event.preventDefault(); LogIn(event);}}>Sign In</button>
+            <button className="btn-signin" onClick={(event) =>{event.preventDefault(); LogIn();}}>Sign In</button>
             </div>
             <br/> 
        </div>
