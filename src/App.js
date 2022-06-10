@@ -1,5 +1,5 @@
 import './App.css';
-import { Routing } from './components/routes/Routes';
+import { Routing } from './routes/Routes';
 import { NavigationApp } from './components/navigation/NavigationApp';
 import { UserProvider } from './shared/provider/UserProvider';
 

@@ -1,5 +1,5 @@
 import {React, useContext} from "react"
-import RoutingPath from "../routes/RoutingPath"
+import RoutingPath from "../../routes/RoutingPath"
 import { Link , useNavigate } from "react-router-dom";
 import "../navigation/NavigationApp.css";
 import {Profile} from "../navigation/profile/Profile"
