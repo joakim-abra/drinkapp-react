@@ -28,7 +28,7 @@ return (
 <>
     <div className="card-effect">
     <Card style={{ width: "18rem" }} className="card-styling">
-    <Button variant="outline-danger" size="sm" onClick={()=>deleteFavorite()}>Remove</Button>
+    <Button variant="outline-warning" size="sm" onClick={()=>deleteFavorite()}>Remove</Button>
     <Card.Img variant="top" src={drink?.strDrinkThumb} alt="Cocktail pic" className="img-card" />
     
     <Card.Body className="card-bg">
