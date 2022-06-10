@@ -1,0 +1,27 @@
+.h11{
+   text-align: center;
+
+}
+
+.login{
+ justify-content:center;
+ position: fixed;
+ top: 30%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+
+.input-username{
+    margin: 7px;
+}
+
+.input-password{
+    margin: 7px;
+}
+
+.div-btn{
+    justify-content:center;
+    position: fixed;
+    left: 33%;
+    
+}

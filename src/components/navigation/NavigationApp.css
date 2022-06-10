@@ -2,9 +2,16 @@
   float: inline-end;
 }
 
-.bg-red{
-  background-color: #800020;
+.nav{
+  margin-left: 16px;
 }
 
+.nav-home{
+  text-align: center;
+}
 
+.nav-right{
+  justify-content: flex-end;
+  
+}
 

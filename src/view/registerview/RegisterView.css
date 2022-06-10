@@ -1,0 +1,30 @@
+.h1-register{
+    text-align: center;
+}
+ 
+.login{
+  justify-content:center;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+ 
+.input-username2{
+     margin: 7px;
+}
+ 
+.input-password2{
+     margin: 7px;
+}
+ 
+.div-btn2{
+     justify-content:center;
+     position: fixed;
+     left: 33%;
+     
+}
+
+body{
+     background-color: red;
+}

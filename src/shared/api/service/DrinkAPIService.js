@@ -34,11 +34,25 @@ const getDrinkById = (id) => {
 };
 
 const getDrinksByIngredientName = (name) => {
-  return http.get(`/Drinks/GetDrinksByIngredientName?name=${name}`)
-}
 
+    return http.get(`/Drinks/GetDrinksByIngredientName?name=${name}`);
+};
 
-export default {getDrinksByName, AddFavorite, logIn, getFavorites, getMyIngredients,findIngredient, getDrinkById, getDrinksByIngredientName};
+const registerUser = (user) => {
+    return http.post(`/User/CreateUser`, user)
+};
+
+export default {
+    getDrinksByName, 
+    AddFavorite, 
+    logIn, 
+    getFavorites, 
+    getMyIngredients,
+    findIngredient, 
+    getDrinkById,
+    getDrinksByIngredientName,
+    registerUser
+ };
 
 /*
   const findDrink = async ()=>{
