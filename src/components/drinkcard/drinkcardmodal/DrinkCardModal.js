@@ -1,7 +1,28 @@
 import {Modal, Button} from "react-bootstrap"
 import "./DrinkCardModal.css"
+import DrinkAPIService from "../../../shared/api/service/DrinkAPIService";
+import { useEffect, useState } from "react";
 
-export const DrinkCardModal = ({show, drink, handleClose}) => {
+
+export const DrinkCardModal = ({show, id, handleClose}) => {
+
+const [drink, setDrink] = useState([])
+
+  const getDrinksByID = async () => {
+    if(show){
+    console.log("method called...")
+    try{
+    const {data} = await DrinkAPIService.getDrinkById(id)
+    setDrink(data)
+    console.log(drink)
+    }
+    catch (error) {
+        console.log(error)
+    }
+  }
+  }
+
+useEffect(() => {getDrinksByID()}, [show])
 
 return (
 <Modal show={show} onHide={handleClose}>

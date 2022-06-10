@@ -34,13 +34,13 @@ const getDrinkById = (id) => {
 };
 
 const getDrinksByIngredientName = (name) => {
+
     return http.get(`/Drinks/GetDrinksByIngredientName?name=${name}`);
 };
 
 const registerUser = (user) => {
     return http.post(`/User/CreateUser`, user)
 };
-
 
 export default {
     getDrinksByName, 
