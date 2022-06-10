@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import {Navbar, Nav, NavDropdown} from 'react-bootstrap'
 import '../navigation/NavigationApp.css'
 import {UserContext} from "../../shared/provider/UserProvider";
-import LocalStorage from "../../shared/storage/LocalStorage"
+import LocalStorage from "../../shared/storage/LocalStorage";
 
 
 export const NavigationApp = () => {
@@ -47,7 +47,9 @@ export const NavigationApp = () => {
               </Navbar.Brand>
               <Nav className="nav-home">
                 <Nav.Link href="/" to={RoutingPath.homeView}>Home</Nav.Link>
-               
+              </Nav>
+              <Nav className="nav-favorites">
+                <Nav.Link href="/favorites" to={RoutingPath.favoriteView}>Favorites</Nav.Link>
               </Nav>
               <Nav className="nav-right">
               <NavDropdown className="nav-dropdown" id="collasible-nav-dropdown" title="Profile">

@@ -8,7 +8,7 @@ export const Profile= () => {
     return(
         <div className="profile">
             <p>profil</p>
-            <span>{authenticatedUser}</span>
+            <span>{localStorage.getItem("username")}</span>
             <Profiledropdown />
         </div>
 

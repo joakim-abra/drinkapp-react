@@ -6,14 +6,24 @@ import {SignInView} from "../view/signinview/SignInView"
 import { RegisterView } from "../view/registerview/RegisterView";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../shared/provider/UserProvider";
+import {FavoriteView} from "../view/authenticatedviews/favoritesview/FavoriteView";
+import LocalStorage from "../shared/storage/LocalStorage";
 
 export const Routing = ({children}) => {
     const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext);
+    const isUserAuthenticated = () => {
+        localStorage.getItem(LocalStorage.Id)>0? setAuthenticatedUser(true): setAuthenticatedUser(false);
+      };
+    
+      useEffect(() => {
+        isUserAuthenticated();
+      }, []);
     return (
         <BrowserRouter>
         {children}
             <Routes>
                 <Route path={RoutingPath.homeView} element={<HomeView/>} />
+                <Route path={RoutingPath.favoriteView} element={<FavoriteView/>} />
 
                 <Route path={RoutingPath.profile} element={<Profile/>}/>
 

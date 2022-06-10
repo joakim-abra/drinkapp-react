@@ -6,7 +6,9 @@ const getDrinksByName = (name)=>{
     // return http.get(`api/json/v1/1/search.php?s=${name}`);
 };
 
-
+const removeFavorite = (userID, drinkID)=>{
+  return http.delete(`Delete?userID=${userID}&idDrink=${drinkID}`);
+}
 
 const logIn = async (login)=>{
   return await http.post(`login`,login);
@@ -52,7 +54,8 @@ export default {
     findIngredient, 
     getDrinkById,
     getDrinksByIngredientName,
-    registerUser
+    registerUser,
+    removeFavorite,
  };
 
 /*
