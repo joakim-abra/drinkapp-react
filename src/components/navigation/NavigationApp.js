@@ -46,7 +46,7 @@ export const NavigationApp = () => {
                 JEM
               </Navbar.Brand>
               <Nav className="nav-home">
-                <Nav.Link href="/" to={RoutingPath.homeView}>Home</Nav.Link>
+                <Nav.Link href="/" to={RoutingPath.homeView}>Search</Nav.Link>
               </Nav>
               <Nav className="nav-favorites">
                 <Nav.Link href="/favorites" to={RoutingPath.favoriteView}>Favorites</Nav.Link>
