@@ -7,8 +7,9 @@ const getDrinksByName = (name)=>{
 };
 
 
-const logIn = (login)=>{
-  return http.post(`login`,login);
+
+const logIn = async (login)=>{
+  return await http.post(`login`,login);
 };
 
 const getFavorites = (userID)=>{
@@ -82,17 +83,7 @@ export default {
 
     }
 
-    const GetMyFavorites = async ()=>{
-      try{
-        const{data} = await DrinkAPIService.getFavorites(1);
-        console.log(data)
-        setServerData(data.favorites)
-      }
-      catch(error)
-      {
-        console.log(error)
-      }
-    }
+ 
 
 
     const GetMyIngredients = async ()=>{

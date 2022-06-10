@@ -11,22 +11,8 @@ export const SignInView = () => {
     const [password, setPassword] = useState("");
     const [badlogin, setBadlogin] = useState(false);
     const navigate = useNavigate();
-
-      
-    // const  logIn = async () => {
-    //     axios.post('https://localhost:44318/api/login',{
-    //         username: usern,
-    //         password: passwrd
-    //     })
-    //     .then((response) => {
-    //         console.log(response.data)
-    //     })
-    //     .catch((error) => {
-    //         console.log(error)
-    //         console.log(error.response)
-    //     })}
-
-            
+        
+    
     const CheckLogIn = async ()=>{
       const login = {
         "username":username,
@@ -34,29 +20,25 @@ export const SignInView = () => {
       }
       try{
         const {data} = await DrinkAPIService.logIn(login);
-        console.log(data)
-        if(data!==null)
-        {
-          setAuthenticatedUser(data)
-          console.log(data)
-        }
+          localStorage.setItem(LocalStorage.Id, data?.id)
+          return true;
+        
       }
         catch(error)
         {
           console.log('error')
           console.log(error.toJSON())
-          return null;
+          return false;
         }
       } 
             
-      const LogIn = () => {
-        CheckLogIn();
-        // logIn();
-        if(authenticatedUser!==null)
-        {
-          localStorage.setItem(LocalStorage.user, authenticatedUser);
-          setBadlogin(false); 
-          navigate(-1);
+      const LogIn = async () => {
+        if(await CheckLogIn() === true)
+        { 
+            setAuthenticatedUser(true)
+            console.log(authenticatedUser)
+            setBadlogin(false); 
+            navigate("/");
         }
         else
         {
@@ -66,11 +48,12 @@ export const SignInView = () => {
       };
 
       const Incorrect = () => {
-        return badlogin?(<div> Incorrect login!</div>) : <></>
+        return badlogin? <div> Incorrect login!</div> : <></>
       }
 
+
         
-        return (
+        return (<>
         <div className="login">
          <h1 className="h11">Log In</h1>
         
@@ -84,11 +67,11 @@ export const SignInView = () => {
           </label>
           
           <div className="div-btn">
-            <button className="btn-signin" onClick={(ev) =>{ev.preventDefault(); LogIn();}}>Sign In</button>
+            <button className="btn-signin" onClick={(event) =>{event.preventDefault(); LogIn(event);}}>Sign In</button>
             </div>
-            <br/>
-        
-         {Incorrect()}
+            <br/> 
        </div>
+       {Incorrect()}
+        </>
       )
 }    
