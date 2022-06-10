@@ -23,27 +23,29 @@ export const RegisterView = () => {
     try{
       const {data} = await DrinkAPIService.registerUser(user);
       console.log(data)
-      if(data!==null)
+      if(data?.id!==null)
       {
-        setAuthenticatedUser(data)
+        setAuthenticatedUser(true)
+        localStorage.setItem(LocalStorage.Id, data?.id)
         console.log(data)
+        console.log('autUser', authenticatedUser)
+        return true;
       }
     }
       catch(error)
       {
         console.log('error')
-        console.log(error.toJSON())
-        return null;
+        console.log(error)
+        return false;
       }
     } 
 
-    const Register = () => {
-      createUser();
-      if(authenticatedUser!==null)
+    const Register = async () => {
+      
+      if(await createUser())
       {
-        // localStorage.setItem(LocalStorage.user, authenticatedUser);
         setNoCreate(false); 
-        navigate(-1);
+        navigate("/");
       }
       else
       {
@@ -64,22 +66,18 @@ export const RegisterView = () => {
     <div className="login">
          <h1 className="h1-register">Register</h1>
          <form>
-      <label>
+
         <input className="input-username2" placeholder="Enter Username" type="Text" onChange={(event) => setUsername(event.target.value)}/>
-        <p>Username</p>
-        <input type="Text" onChange={(event) => setUsername(event.target.value)}/>
-      </label>
+
       <br/>
-      <label>
+
         <input className="input-password2" placeholder="Enter Password" type="Text" onChange={(event) => setPassword(event.target.value)}/>
-      </label>
+
       <div className="div-btn2">
-        <button>register</button>
+
       </div> 
-      <label>
-       <p>Password</p>
-        <input type="password" onChange={(event) => setPassword(event.target.value)}/>
-      </label>
+
+
       <div>
       <button onClick={(ev) =>{ev.preventDefault(); Register();}}>Submit</button>
       </div>
