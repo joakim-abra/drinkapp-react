@@ -21,23 +21,29 @@ export const NavigationApp = () => {
 
     }
 
-    /*     const LoggedIn = () => {
+    
+    
+    
+
+         const LoggedIn = () => {
       if (authenticatedUser) {
         return (
-          <div className="nav-desktop-login">
-            <Profile />
-          </div>
-        );
-      } else {
-        return (
-          <div className="nav-desktop-login">
-            <button onClick={() => navigate(RoutingPath.signInView)}>
-              Sign in
-            </button>
-          </div>
+          <NavDropdown className="nav-dropdown" id="collasible-nav-dropdown" title="Profile">
+            <NavDropdown.Item>
+              You are logged in
+              </NavDropdown.Item> 
+          <NavDropdown.Item onClick={() => logOut()} href="/">Log out</NavDropdown.Item> 
+          </NavDropdown>
+          );
+        } else {
+          return (
+            <NavDropdown className="nav-dropdown" id="collasible-nav-dropdown" title="Profile">
+          <NavDropdown.Item href="/signin">Log in</NavDropdown.Item>
+          <NavDropdown.Item href="/register">Register</NavDropdown.Item>
+          </NavDropdown>
         );
       }
-    }; */
+    }; 
         
         return (
           <div className="App">
@@ -52,11 +58,8 @@ export const NavigationApp = () => {
                 <Nav.Link href="/favorites" to={RoutingPath.favoriteView}>Favorites</Nav.Link>
               </Nav>
               <Nav className="nav-right">
-              <NavDropdown className="nav-dropdown" id="collasible-nav-dropdown" title="Profile">
-                  <NavDropdown.Item href="/signin">Log in</NavDropdown.Item>
-                  <NavDropdown.Item href="/register">Register</NavDropdown.Item>
-                   <NavDropdown.Item onClick={() => logOut()} href="/">Log out</NavDropdown.Item> 
-                </NavDropdown>
+              
+                {LoggedIn()};
               </Nav>
 
             </Navbar>
