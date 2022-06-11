@@ -1,11 +1,11 @@
 
 const Id = "Id";
 const Username = "username";
-const Password=  "password";
+const inFavoriteView=  false;
 
 
 export default {
   Id,
   Username,
-  Password
+  inFavoriteView
 };

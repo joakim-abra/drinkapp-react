@@ -5,6 +5,7 @@ import "./HomeView.css"
 import {DrinkCard} from "../../components/drinkcard/DrinkCard"
 import { Pagination } from "antd";
 import 'antd/dist/antd.css';
+import LocalStorage from "../../shared/storage/LocalStorage"
 
 export const HomeView = () => {
 
@@ -14,6 +15,7 @@ const [isLoaded, setIsLoaded] = useState(false)
 const [buttonClicked, setButtonClicked] = useState(false)
 
 const findDrinkByName = async () => {
+  localStorage.setItem(LocalStorage.inFavoriteView,false)
   try{
   const {data} = await DrinkAPIService.getDrinksByName(input)
   setServerData(data.drinks)
@@ -26,6 +28,7 @@ const findDrinkByName = async () => {
 }
 
 const findDrinkByIngredient = async () => {
+  localStorage.setItem(LocalStorage.inFavoriteView,false)
   try{
   const {data} = await DrinkAPIService.getDrinksByIngredientName(input)
   setServerData(data.drinks)
@@ -50,6 +53,10 @@ const displayData = () => { return isLoaded ? (
       </div>
     )
   };
+
+  useEffect(() => {
+      localStorage.setItem(LocalStorage.inFavoriteView, false)
+  },[])
 
       if (buttonClicked && ((serverData != undefined) || (serverData != null))) {
         return (

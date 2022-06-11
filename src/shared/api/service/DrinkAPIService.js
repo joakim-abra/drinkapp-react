@@ -7,7 +7,7 @@ const getDrinksByName = (name)=>{
 };
 
 const removeFavorite = (userID, drinkID)=>{
-  return http.delete(`Delete?userID=${userID}&idDrink=${drinkID}`);
+  return http.delete(`UserFavorite/Delete?userID=${userID}&idDrink=${drinkID}`);
 }
 
 const logIn = async (login)=>{
@@ -27,6 +27,13 @@ const getMyIngredients = (userID) => {
   return http.get(`UserIngredient/GetMyIngredients?userID=${userID}`)
 }
 
+const addUserIngredient = (userID, drinkID) => {
+  return http.post(`UserIngredient/AddUser?userID=${userID}&ingredientId=${drinkID}`);
+}
+
+const removeUserIngredient = (userID, idIngredient) => {
+  return http.delete(`UserIngredient/UserIngredient/Delete?userID=${userID}&cocktaildbID=${idIngredient}`)
+}
 
 const findIngredient = (search) => {
   return http.get(`Ingredient/Ingredients/Search?name=${search}`)
@@ -56,6 +63,8 @@ export default {
     getDrinksByIngredientName,
     registerUser,
     removeFavorite,
+    addUserIngredient,
+    removeUserIngredient,
  };
 
 /*

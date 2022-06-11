@@ -9,6 +9,8 @@ import { UserContext } from "../shared/provider/UserProvider";
 import {FavoriteView} from "../view/authenticatedviews/favoritesview/FavoriteView";
 import LocalStorage from "../shared/storage/LocalStorage";
 import { SettingsView } from "../view/settingsview/SettingsView";
+import {IngredientsView } from "../view/authenticatedviews/ingredientsview/IngredientsView";
+
 
 export const Routing = ({children}) => {
     const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext);
@@ -25,11 +27,10 @@ export const Routing = ({children}) => {
             <Routes>
                 <Route path={RoutingPath.homeView} element={<HomeView/>} />
                 <Route path={RoutingPath.favoriteView} element={<FavoriteView/>} />
-
                 <Route path={RoutingPath.settings} element={<SettingsView/>}/>
-
+                <Route path={RoutingPath.ingredientsView} element={<IngredientsView/>} />
+                <Route path={RoutingPath.profile} element={<Profile/>}/>
                 <Route path={RoutingPath.signInView} element={<SignInView/>}/>
-
                 <Route path={RoutingPath.registerView} element={<RegisterView/>}/>
 
             </Routes>
