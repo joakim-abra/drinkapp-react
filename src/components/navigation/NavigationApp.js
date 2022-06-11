@@ -56,6 +56,7 @@ export const NavigationApp = () => {
               {authenticatedUser ? 
               <Nav className="nav-favorites">
                 <Nav.Link href="/favorites" to={RoutingPath.favoriteView}>Favorites</Nav.Link>
+                <Nav.Link href="/ingredients" to={RoutingPath.ingredientsView}>Ingredients</Nav.Link>
               </Nav>
               : null}
               <Nav className="nav-right">
