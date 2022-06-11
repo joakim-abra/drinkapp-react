@@ -13,10 +13,11 @@ const [isLoaded, setIsLoaded] = useState(false);
 
 useEffect(()=>{
  GetMyFavorites()
-}
+return ()=>localStorage.setItem(LocalStorage.inFavoriteView, false)}
 ,[])
 
 const GetMyFavorites = async ()=>{
+    localStorage.setItem(LocalStorage.inFavoriteView, true);
     setIsLoaded(false);
     try{
         console.log(localStorage.getItem("Id"))
