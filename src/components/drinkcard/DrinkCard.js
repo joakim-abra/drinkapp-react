@@ -24,11 +24,20 @@ const deleteFavorite = async () =>{
 }
 
 
+const showRemove = () => {
+    if(localStorage.getItem(LocalStorage.inFavoriteView))
+    {
+       return <Button variant="outline-warning" size="sm" onClick={()=>deleteFavorite()}>Remove</Button>
+    }
+    else
+    return <></>
+}
+
 return (
 <>
     <div className="card-effect">
     <Card style={{ width: "18rem" }} className="card-styling">
-    <Button variant="outline-warning" size="sm" onClick={()=>deleteFavorite()}>Remove</Button>
+    {showRemove()}
     <Card.Img variant="top" src={drink?.strDrinkThumb} alt="Cocktail pic" className="img-card" />
     
     <Card.Body className="card-bg">
