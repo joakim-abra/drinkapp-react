@@ -121,19 +121,19 @@ useEffect(() => {
 
     return (
         <>
-        <main className="main">
-          <section className="section-search">
+        <div className="row">
+          <div className="column">
               <h1>Search ingredients</h1>
               <input placeholder="Search for ingredient.." onChange={(event) => setInput(event.target.value)}/>
               <button onClick={() => {findIngredient(input); setButtonClicked(true)}}>Search by name</button>
               {displaySearchResults()}
-          </section>
-        <section className="section-list">
+          </div>
+          <div className="column">
         <h1>My ingredients list</h1>
         {displayStoredList()}
-        </section>
-      </main>
+        </div>
       {console.log(idArray)}
+      </div>
         </>
     )
 }
