@@ -1,12 +1,12 @@
 const homeView = "/"
-const profile ="/profile"
+const settings ="/settings"
 const signInView = "/signin"
 const registerView = "/register"
 const favoriteView = "/favorites"
 
 export default{
 homeView,
-profile,
+settings,
 signInView,
 registerView,
 favoriteView,
