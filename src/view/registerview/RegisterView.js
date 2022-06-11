@@ -73,12 +73,10 @@ export const RegisterView = () => {
 
         <input className="input-password2" placeholder="Enter Password" type="Text" onChange={(event) => setPassword(event.target.value)}/>
 
+     
+
+
       <div className="div-btn2">
-
-      </div> 
-
-
-      <div>
       <button onClick={(ev) =>{ev.preventDefault(); Register();}}>Submit</button>
       </div>
     </form>
