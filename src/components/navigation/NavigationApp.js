@@ -48,9 +48,11 @@ export const NavigationApp = () => {
               <Nav className="nav-home">
                 <Nav.Link href="/" to={RoutingPath.homeView}>Search</Nav.Link>
               </Nav>
+              {authenticatedUser ? 
               <Nav className="nav-favorites">
                 <Nav.Link href="/favorites" to={RoutingPath.favoriteView}>Favorites</Nav.Link>
               </Nav>
+              : null}
               <Nav className="nav-right">
               <NavDropdown className="nav-dropdown" id="collasible-nav-dropdown" title="Profile">
                   <NavDropdown.Item href="/signin">Log in</NavDropdown.Item>
