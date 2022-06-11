@@ -18,7 +18,6 @@ export const NavigationApp = () => {
       localStorage.removeItem(localStorage.clear());
       setAuthenticatedUser(false);
       navigate(RoutingPath.homeView)
-
     }
 
     
@@ -30,9 +29,9 @@ export const NavigationApp = () => {
         return (
           <NavDropdown className="nav-dropdown" id="collasible-nav-dropdown" title="Profile">
             <NavDropdown.Item>
-              You are logged in
+             {authenticatedUser}
               </NavDropdown.Item> 
-          <NavDropdown.Item onClick={() => logOut()} href="/">Log out</NavDropdown.Item> 
+          <NavDropdown.Item onClick={() => logOut()} href="/" to={RoutingPath.homeView}>Log out</NavDropdown.Item> 
           </NavDropdown>
           );
         } else {

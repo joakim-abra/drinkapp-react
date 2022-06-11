@@ -61,7 +61,7 @@ const displayData = () => { return isLoaded ? (
       if (buttonClicked && ((serverData != undefined) || (serverData != null))) {
         return (
           <main>
-          <section>
+          <section className="section-home">
               <h1>Search cocktails</h1>
               <input placeholder="Enter text" onChange={(event) => setInput(event.target.value)}/>
               <button onClick={() => {findDrinkByName(input); setButtonClicked(true)}}>Search by name</button>
@@ -74,7 +74,7 @@ const displayData = () => { return isLoaded ? (
       else if (buttonClicked && ((serverData == undefined) || (serverData == null))) {
         return (
           <main>
-          <section>
+          <section className="section-home">
               <h1>Search cocktails</h1>
               <input placeholder="Enter text" onChange={(event) => setInput(event.target.value)}/>
               <button onClick={() => {findDrinkByName(input); setButtonClicked(true)}}>Search by name</button>
@@ -87,7 +87,7 @@ const displayData = () => { return isLoaded ? (
       else {
         return (
           <main>
-          <section>
+          <section className="section-home">
               <h1>Search cocktails</h1>
               <input placeholder="Enter text" onChange={(event) => setInput(event.target.value)}/>
               <button onClick={() => {findDrinkByName(input); setButtonClicked(true)}}>Search by name</button>
