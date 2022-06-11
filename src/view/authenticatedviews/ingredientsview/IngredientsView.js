@@ -63,9 +63,9 @@ export const IngredientsView = () => {
     }
 
 
-    const displaySearchResults = () => { return isLoaded ? (
-        <div> {serverData.map((ingredient) => (
-          <div>
+    const displaySearchResults = () => { return isLoaded ? ( 
+        <div>{serverData.map((ingredient) => (
+          <div className="box-result">
             <p>
                 <h3>
                 {ingredient?.strIngredient}
@@ -83,7 +83,7 @@ export const IngredientsView = () => {
           </div>
             ))} 
           </div>  
-          ) : (
+           ) : (
             <div>
               <Spinner animation="border" />
             </div>
@@ -92,7 +92,7 @@ export const IngredientsView = () => {
 
         const displayStoredList = () => { return isLoaded ? (
             <div> {myList.map((list) => (
-              <div>
+              <div className="box-result">
                 {idArray.push(list?.cocktailDBid)}
                 <p>
                     <h3>
