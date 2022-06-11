@@ -71,7 +71,7 @@ export const RegisterView = () => {
 
       <br/>
 
-        <input className="input-password2" placeholder="Enter Password" type="Text" onChange={(event) => setPassword(event.target.value)}/>
+        <input className="input-password2" placeholder="Enter Password" type="Password" onChange={(event) => setPassword(event.target.value)}/>
 
      
 
