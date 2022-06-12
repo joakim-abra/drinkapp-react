@@ -49,8 +49,12 @@ const getDrinksByIngredientName = (name) => {
 };
 
 const registerUser = (user) => {
-    return http.post(`/User/CreateUser`, user)
+    return http.post(`/User/CreateUser`, user);
 };
+
+const getRandomDrink = () => {
+    return http.get(`Drinks/RandomDrink/`);
+}
 
 export default {
     getDrinksByName, 
@@ -65,6 +69,7 @@ export default {
     removeFavorite,
     addUserIngredient,
     removeUserIngredient,
+    getRandomDrink,
  };
 
 /*

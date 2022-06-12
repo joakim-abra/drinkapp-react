@@ -13,6 +13,48 @@ const [input, setInput] = useState("")
 const [serverData, setServerData] = useState([])
 const [isLoaded, setIsLoaded] = useState(false)
 const [buttonClicked, setButtonClicked] = useState(false)
+const [show, setShow] = useState(true)
+const [randomDrink, setRandomDrink] = useState([]);
+
+const loadRandom = async () => {
+    try{
+      const {data} = await DrinkAPIService.getRandomDrink();
+      setRandomDrink(data);
+      console.log(data);
+  }
+  catch(error){
+    console.log(error);
+  } 
+}
+
+
+const showRandom = () => {
+
+    return (
+      <div>
+    <h1>Random drink: {randomDrink?.strDrink}</h1>
+    <span><b>Ingredients</b>: {randomDrink?.strIngredient1}, {randomDrink?.strIngredient2}{randomDrink.strIngredient3 ? ", " + randomDrink.strIngredient3: null}{randomDrink.strIngredient4 ? ", " + randomDrink.strIngredient4: null}
+    {randomDrink.strIngredient5 ? ", " + randomDrink.strIngredient5: null}{randomDrink.strIngredient6 ? ", " + randomDrink.strIngredient6: null}{randomDrink.strIngredient7 ? ", " + randomDrink.strIngredient7: null}
+    {randomDrink.strIngredient8 ? ", " + randomDrink.strIngredient8: null}{randomDrink.strIngredient9 ? ", " + randomDrink.strIngredient9: null}{randomDrink.strIngredient10 ? ", " + randomDrink.strIngredient10: null}
+    {randomDrink.strIngredient11 ? ", " + randomDrink.strIngredient11: null}{randomDrink.strIngredient12 ? ", " + randomDrink.strIngredient12: null}{randomDrink.strIngredient13 ? ", " + randomDrink.strIngredient13: null}
+    {randomDrink.strIngredient14 ? ", " + randomDrink.strIngredient14: null}{randomDrink.strIngredient15 ? ", " + randomDrink.strIngredient15: null}</span>
+    <br />
+    <p><b>Instructions:</b> {randomDrink?.strInstructions}</p>
+    <br />
+    <img src={randomDrink?.strDrinkThumb}></img>
+    
+  </div>)
+
+
+}
+
+useEffect(() => {
+loadRandom();
+},[show])
+
+
+
+
 
 const findDrinkByName = async () => {
   localStorage.setItem(LocalStorage.inFavoriteView,false)
@@ -21,11 +63,13 @@ const findDrinkByName = async () => {
   setServerData(data.drinks)
   console.log(data)
   setIsLoaded(true)
+  setShow(false)
   }
   catch (error) {
       console.log(error)
   }
 }
+
 
 const findDrinkByIngredient = async () => {
   localStorage.setItem(LocalStorage.inFavoriteView,false)
@@ -34,6 +78,7 @@ const findDrinkByIngredient = async () => {
   setServerData(data.drinks)
   console.log(serverData)
   setIsLoaded(true)
+  setShow(false)
   }
   catch (error) {
       console.log(error)
@@ -54,9 +99,7 @@ const displayData = () => { return isLoaded ? (
     )
   };
 
-  useEffect(() => {
-      localStorage.setItem(LocalStorage.inFavoriteView, false)
-  },[])
+
 
       if (buttonClicked && ((serverData != undefined) || (serverData != null))) {
         return (
@@ -92,6 +135,7 @@ const displayData = () => { return isLoaded ? (
               <input placeholder="Enter text" onChange={(event) => setInput(event.target.value)}/>
               <button onClick={() => {findDrinkByName(input); setButtonClicked(true)}}>Search by name</button>
               <button onClick={() => {findDrinkByIngredient(input); setButtonClicked(true)}}>Search by ingredient</button> 
+              {showRandom()}
           </section>
       </main>
         )
