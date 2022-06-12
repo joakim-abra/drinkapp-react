@@ -14,6 +14,10 @@ const logIn = async (login)=>{
   return await http.post(`login`,login);
 };
 
+const EditUser = async (newUser)=>{
+  return await http.patch(`User/EditUser`,newUser);
+}
+
 const getFavorites = (userID)=>{
   return http.get(`UserFavorite/Favorites?id=${userID}`)
 }
@@ -65,6 +69,7 @@ export default {
     removeFavorite,
     addUserIngredient,
     removeUserIngredient,
+    EditUser,
  };
 
 /*
