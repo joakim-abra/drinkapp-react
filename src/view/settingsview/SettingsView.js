@@ -2,7 +2,7 @@ import DrinkAPIService from "../../shared/api/service/DrinkAPIService";
 import { UserContext } from "../../shared/provider/UserProvider";
 import {useState, useContext} from "react";
 import LocalStorage from "../../shared/storage/LocalStorage";
-
+import "../settingsview/SettingsView.css";
 
 
 export const SettingsView = () => {
@@ -39,12 +39,12 @@ export const SettingsView = () => {
             }
         }
         const NotSucces = () => {
-            return badsettings? <div>Cant change user!</div> : <div>Changes saved! </div>
+            return badsettings? <div>Cant change user!</div> : <></>
         }
         
         
         return (<>
-        <div className="Settings">
+        <div className="settings">
          <h1 className="h11">Change login</h1>
         
           <label className="label1">
@@ -60,8 +60,9 @@ export const SettingsView = () => {
             <button className="btn-signin" onClick={(event) =>{event.preventDefault(); ChangeLogin();}}>Confirm</button>
             </div>
             <br/> 
-       </div>
-       {NotSucces()}
+            
+        </div>
+          {NotSucces()}
         </>
     )
 }
