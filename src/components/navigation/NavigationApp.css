@@ -11,7 +11,23 @@
 }
 
 .nav-right{
-  justify-content: flex-end;
+  justify-content: center;
   
+}
+
+.App{
+  text-align: center;
+  justify-content: center;
+  display:flex;
+  width: 100%;
+
+}
+
+.navbar{
+  align-items: center;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-indent: 30px;
 }
 
