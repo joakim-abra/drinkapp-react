@@ -50,3 +50,7 @@
 .no-result {
     margin: 10px;
 }
+
+.display-spinner {
+    justify-content: center;
+}

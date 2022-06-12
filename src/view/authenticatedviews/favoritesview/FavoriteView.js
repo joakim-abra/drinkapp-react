@@ -5,6 +5,7 @@ import {Spinner,Button} from "react-bootstrap"
 import DrinkAPIService from "../../../shared/api/service/DrinkAPIService";
 import {DrinkCard} from "../../../components/drinkcard/DrinkCard";
 import {UserContext} from "../../../shared/provider/UserProvider";
+import "./FavoriteView.css"
 
 export const FavoriteView = () => {
 const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext);
@@ -40,7 +41,7 @@ const GetMyFavorites = async ()=>{
         ))} 
       </div>  
       ) : (
-        <div>
+        <div className="spinner-favorite">
           <Spinner animation="border" />
         </div>
       )
