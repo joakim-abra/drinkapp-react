@@ -157,9 +157,9 @@ useEffect(() => {
 },[onRefresh])
 
     return (
-        <>
+      
         <div className="row">
-          <div className="column">
+          <div className="column1">
             <div className="header-box">
               <h1>Search ingredients</h1>
               </div>
@@ -168,23 +168,23 @@ useEffect(() => {
               <Button variant="outline-dark" size="sm" className="add-btn" onClick={() => {findIngredient(input); setButtonClicked(true)}}>Search by name</Button>
               </div>
               {displaySearchResults()}
-          <div className="header-box">
-              <h1>Search for drinks by my ingredients</h1>
               </div>
-              <div className="search-box">
-              <Button variant="outline-dark" size="sm" className="add-btn" onClick={() => {searchFromList(); setButtonClicked(true)}}>Search by ingredient list</Button>
-              </div>
-              {displaySearchResultsFromList()}
-          </div>
-          <div className="column">
+          <div className="column2">
             <div className="header-box">
         <h1>My ingredients list</h1>
         </div>
         <div className="search-box"></div>
         {displayStoredList()}
         </div>
+        <div className="column3">
+          <div className="header-box">
+              <h1>Search for drinks by my ingredients</h1>
+              </div>
+              <Button variant="outline-dark" size="sm" className="add-btn" onClick={() => {searchFromList(); setButtonClicked(true)}}>Search by ingredient list</Button>
+              {displaySearchResultsFromList()}
+              </div>
       {console.log(idArray)}
       </div>
-        </>
+  
     )
 }
