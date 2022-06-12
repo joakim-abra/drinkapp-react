@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import {UserContext} from "../../shared/provider/UserProvider"
 import { useNavigate } from "react-router-dom";
 import LocalStorage from "../../shared/storage/LocalStorage";
+import { Button } from "react-bootstrap";
 
 
 export const RegisterView = () => {
@@ -77,7 +78,7 @@ export const RegisterView = () => {
 
 
       <div className="div-btn2">
-      <button onClick={(ev) =>{ev.preventDefault(); Register();}}>Submit</button>
+      <Button variant="outline-dark" size="sm" onClick={(ev) =>{ev.preventDefault(); Register();}}>Submit</Button>
       </div>
     </form>
     {BadCreate()}

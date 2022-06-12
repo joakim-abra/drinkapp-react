@@ -3,6 +3,7 @@ import DrinkAPIService from "../../shared/api/service/DrinkAPIService";
 import {UserContext} from "../../shared/provider/UserProvider"
 import { useNavigate } from "react-router-dom";
 import LocalStorage from "../../shared/storage/LocalStorage";
+import { Button } from "react-bootstrap";
 import "../signinview/SignInView.css"
 
 export const SignInView = () => {
@@ -68,7 +69,7 @@ export const SignInView = () => {
           </label>
           
           <div className="div-btn">
-            <button className="btn-signin" onClick={(event) =>{event.preventDefault(); LogIn();}}>Sign In</button>
+            <Button variant="outline-dark" size="sm" className="btn-signin" onClick={(event) =>{event.preventDefault(); LogIn();}}>Sign In</Button>
             </div>
             <br/> 
        </div>
