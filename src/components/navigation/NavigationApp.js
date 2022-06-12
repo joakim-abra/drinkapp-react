@@ -49,7 +49,7 @@ export const NavigationApp = () => {
         
         return (
           <div className="App">
-            <Navbar bg="dark" variant="dark" sticky="top">
+            <Navbar className="navbar" bg="dark" variant="dark" sticky="top">
               <Navbar.Brand className="nav">
                 JEM
               </Navbar.Brand>

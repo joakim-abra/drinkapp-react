@@ -24,8 +24,8 @@ export const SettingsView = () => {
             const {data} = await DrinkAPIService.EditUser(newUser);
             localStorage.setItem(LocalStorage.Id, data?.id)
             localStorage.setItem(LocalStorage.Username, data?.username)
-            
             return true;
+            
         }catch(error){
             console.log('error')
             console.log(error)
