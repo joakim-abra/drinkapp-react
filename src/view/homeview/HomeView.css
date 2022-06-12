@@ -15,3 +15,38 @@
 .card-padding {
     padding: 0.3rem;
 }
+
+.search-row {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+
+.search-header {
+    display: flex;
+    justify-content: center;
+}
+
+.search-input {
+    padding: 10px;
+  }
+
+.search-btn {
+    margin-top: 10px;
+  }
+
+.rnd-style {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.rnd-col {
+    width: 200rem;
+    margin: 10px;
+}
+
+.no-result {
+    margin: 10px;
+}

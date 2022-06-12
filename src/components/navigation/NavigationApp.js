@@ -49,9 +49,9 @@ export const NavigationApp = () => {
         
         return (
           <div className="App">
-            <Navbar bg="dark" variant="dark" sticky="top">
+            <Navbar className="navbar-color" variant="dark" sticky="top">
               <Navbar.Brand className="nav">
-                JEM
+                iDrink App
               </Navbar.Brand>
               <Nav className="nav-home">
                 <Nav.Link href="/" to={RoutingPath.homeView}>Search</Nav.Link>

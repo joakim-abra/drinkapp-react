@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import DrinkAPIService from "../../shared/api/service/DrinkAPIService";
-import {Spinner} from "react-bootstrap"
+import {Spinner, Button} from "react-bootstrap"
 import "./HomeView.css"
 import {DrinkCard} from "../../components/drinkcard/DrinkCard"
-import { Pagination } from "antd";
 import 'antd/dist/antd.css';
 import LocalStorage from "../../shared/storage/LocalStorage"
 
@@ -31,8 +30,10 @@ const loadRandom = async () => {
 const showRandom = () => {
 
     return (
-      <div>
-    <h1>Random drink: {randomDrink?.strDrink}</h1>
+      <div className="rnd-style">
+        <div className="rnd-col"></div>
+        <div>
+    <h3>Random drink: {randomDrink?.strDrink}</h3>
     <span><b>Ingredients</b>: {randomDrink?.strIngredient1}, {randomDrink?.strIngredient2}{randomDrink.strIngredient3 ? ", " + randomDrink.strIngredient3: null}{randomDrink.strIngredient4 ? ", " + randomDrink.strIngredient4: null}
     {randomDrink.strIngredient5 ? ", " + randomDrink.strIngredient5: null}{randomDrink.strIngredient6 ? ", " + randomDrink.strIngredient6: null}{randomDrink.strIngredient7 ? ", " + randomDrink.strIngredient7: null}
     {randomDrink.strIngredient8 ? ", " + randomDrink.strIngredient8: null}{randomDrink.strIngredient9 ? ", " + randomDrink.strIngredient9: null}{randomDrink.strIngredient10 ? ", " + randomDrink.strIngredient10: null}
@@ -41,8 +42,9 @@ const showRandom = () => {
     <br />
     <p><b>Instructions:</b> {randomDrink?.strInstructions}</p>
     <br />
-    <img src={randomDrink?.strDrinkThumb}></img>
-    
+    <img src={randomDrink?.strDrinkThumb} className="rnd-img"></img>
+    </div>
+    <div className="rnd-col"></div>
   </div>)
 
 
@@ -103,12 +105,12 @@ const displayData = () => { return isLoaded ? (
 
       if (buttonClicked && ((serverData != undefined) || (serverData != null))) {
         return (
-          <main>
+          <main className="search-row">
           <section className="section-home">
               <h1>Search cocktails</h1>
-              <input placeholder="Enter text" onChange={(event) => setInput(event.target.value)}/>
-              <button onClick={() => {findDrinkByName(input); setButtonClicked(true)}}>Search by name</button>
-              <button onClick={() => {findDrinkByIngredient(input); setButtonClicked(true)}}>Search by ingredient</button> 
+              <input placeholder="Enter text" onChange={(event) => setInput(event.target.value)}/> <br />
+              <Button variant="outline-dark" size="sm" className="search-btn" onClick={() => {findDrinkByName(input); setButtonClicked(true)}}>Search by name</Button> <br />
+              <Button variant="outline-dark" size="sm" className="search-btn" onClick={() => {findDrinkByIngredient(input); setButtonClicked(true)}}>Search by ingredient</Button> 
               {displayData()}
           </section>
       </main>
@@ -116,25 +118,33 @@ const displayData = () => { return isLoaded ? (
       } 
       else if (buttonClicked && ((serverData == undefined) || (serverData == null))) {
         return (
-          <main>
+          <main className="search-row">
           <section className="section-home">
+          <div className="search-header">
               <h1>Search cocktails</h1>
-              <input placeholder="Enter text" onChange={(event) => setInput(event.target.value)}/>
-              <button onClick={() => {findDrinkByName(input); setButtonClicked(true)}}>Search by name</button>
-              <button onClick={() => {findDrinkByIngredient(input); setButtonClicked(true)}}>Search by ingredient</button>
-              <h3>No result</h3> 
+              </div>
+              <input placeholder="Enter text" onChange={(event) => setInput(event.target.value)}/> <br />
+              <Button variant="outline-dark" size="sm" className="search-btn" onClick={() => {findDrinkByName(input); setButtonClicked(true)}}>Search by name</Button> <br />
+              <Button  variant="outline-dark" size="sm" className="search-btn" onClick={() => {findDrinkByIngredient(input); setButtonClicked(true)}}>Search by ingredient</Button>
+              <div className="no-result">
+              <h1>Search produced no result</h1> 
+              </div>
           </section>
       </main>
         )
       }
       else {
         return (
-          <main>
+          <main className="search-row">
           <section className="section-home">
+            <div className="search-header">
               <h1>Search cocktails</h1>
-              <input placeholder="Enter text" onChange={(event) => setInput(event.target.value)}/>
-              <button onClick={() => {findDrinkByName(input); setButtonClicked(true)}}>Search by name</button>
-              <button onClick={() => {findDrinkByIngredient(input); setButtonClicked(true)}}>Search by ingredient</button> 
+              </div>
+              <div className="search-input">
+              <input placeholder="Enter text" onChange={(event) => setInput(event.target.value)}/> <br />
+              <Button variant="outline-dark" size="sm" className="search-btn" onClick={() => {findDrinkByName(input); setButtonClicked(true)}}>Search by name</Button> <br />
+              <Button variant="outline-dark" size="sm" className="search-btn" onClick={() => {findDrinkByIngredient(input); setButtonClicked(true)}}>Search by ingredient</Button>
+              </div> 
               {showRandom()}
           </section>
       </main>
