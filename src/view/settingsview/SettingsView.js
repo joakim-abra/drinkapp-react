@@ -2,6 +2,7 @@ import DrinkAPIService from "../../shared/api/service/DrinkAPIService";
 import { UserContext } from "../../shared/provider/UserProvider";
 import {useState, useContext} from "react";
 import LocalStorage from "../../shared/storage/LocalStorage";
+import { Button } from "react-bootstrap";
 import "../settingsview/SettingsView.css";
 
 
@@ -60,7 +61,7 @@ export const SettingsView = () => {
           </label>
           
           <div className="div-btn">
-            <button className="btn-signin" onClick={(event) =>{event.preventDefault(); ChangeUserLogin();}}>Confirm</button>
+            <Button variant="outline-dark" size="sm" className="btn-signin" onClick={(event) =>{event.preventDefault(); ChangeUserLogin();}}>Confirm</Button>
             </div>
             <br/> 
             
