@@ -1,5 +1,8 @@
 import http from "../DrinkAPI";
 
+const searchDrinksByMyIngredients = (userID) => {
+  return http.get(`Drinks/GetDrinksByMyIngredients?userID=${userID}`);
+}
 
 const getDrinksByName = (name)=>{
     return http.get(`Drinks/GetDrinksByName?name=${name}`);
@@ -31,12 +34,12 @@ const getMyIngredients = (userID) => {
   return http.get(`UserIngredient/GetMyIngredients?userID=${userID}`)
 }
 
-const addUserIngredient = (userID, drinkID) => {
-  return http.post(`UserIngredient/AddUser?userID=${userID}&ingredientId=${drinkID}`);
+const addUserIngredient = (userID, ingredientID) => {
+  return http.post(`UserIngredient?userID=${userID}&ingredientId=${ingredientID}`);
 }
 
 const removeUserIngredient = (userID, idIngredient) => {
-  return http.delete(`UserIngredient/UserIngredient/Delete?userID=${userID}&cocktaildbID=${idIngredient}`)
+  return http.delete(`UserIngredient?userID=${userID}&cocktaildbID=${idIngredient}`)
 }
 
 const findIngredient = (search) => {
@@ -61,6 +64,7 @@ const getRandomDrink = () => {
 }
 
 export default {
+    searchDrinksByMyIngredients,
     getDrinksByName, 
     AddFavorite, 
     logIn, 

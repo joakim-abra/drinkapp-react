@@ -1,5 +1,5 @@
 import { Card, Button } from "react-bootstrap";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect,useCallback } from "react";
 import { DrinkCardModal } from "./drinkcardmodal/DrinkCardModal";
 import "./DrinkCard.css"
 import DrinkApiService from "../../shared/api/service/DrinkAPIService";
@@ -16,9 +16,14 @@ const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
 const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext);
 const URL = "http://localhost:3000";
-
-
 const [serverData, setServerData] = useState([]);
+const [refreshing, setRefreshing] = useState(false);
+message.config({
+    top: 40,
+    duration: 1,
+    maxCount: 1,
+    rtl: true,
+  });
 
 
 const getFavorites = async ()=>{
@@ -37,24 +42,24 @@ const getFavorites = async ()=>{
       console.log(error)
     }
   }
-  const [favoriteDrinkId, setFavoriteDrinkId] = useState()
-  const [abortAdd, setAbortAdd] = useState(false)
+//   const [favoriteDrinkId, setFavoriteDrinkId] = useState()
+//   const [abortAdd, setAbortAdd] = useState(false)
 
-const checkDuplicates = () => {
-    getFavorites()
+// const checkDuplicates = () => {
+//     getFavorites()
 
-    {serverData.map(serverData => {
-        idList.push(serverData.idDrink)
-      setFavoriteDrinkId(serverData)
-      {console.log(favoriteDrinkId)}
-      {console.log(serverData)}
-      (favoriteDrinkId === addDrinkId) ? setAbortAdd(true) : setAbortAdd(false)
-     } )} 
+//     {serverData.map(serverData => {
+//         idList.push(serverData.idDrink)
+//       setFavoriteDrinkId(serverData)
+//       {console.log(favoriteDrinkId)}
+//       {console.log(serverData)}
+//       (favoriteDrinkId === addDrinkId) ? setAbortAdd(true) : setAbortAdd(false)
+//      } )} 
            
          
-          console.log(abortAdd)
+//           console.log(abortAdd)
     
-}
+// }
 
 /*
 {serverData.map((drink) => (
@@ -71,7 +76,8 @@ const deleteFavorite = async () =>{
     {
         const response = await DrinkApiService.removeFavorite(localStorage.getItem(LocalStorage.Id),drink?.idDrink)
         console.log(response);
-        message.success("Cocktail deleted from Favorites");
+        message.info("Cocktail deleted from Favorites");
+        onRefresh();
     }
     catch (error)
     {
@@ -79,25 +85,23 @@ const deleteFavorite = async () =>{
     }
 }
 
-const displayErrorMessage = () => {
-    message.error("Cocktail already in favorites");
-}
 
-const [addDrinkId, setAddDrinkId] = useState();
+// const [addDrinkId, setAddDrinkId] = useState();
 
 const addFavorite = async () =>{
-setAddDrinkId(drink?.idDrink)
-console.log('drink.idDrink', drink?.idDrink)
-checkDuplicates()
-if (abortAdd) {
-    alert("Already in Favorites")
-    return
-}else {
+// setAddDrinkId(drink?.idDrink)
+// console.log('drink.idDrink', drink?.idDrink)
+// checkDuplicates()
+// if (abortAdd) {
+//     alert("Already in Favorites")
+//     return
+// }else {
     try
     {
         const response = await DrinkApiService.AddFavorite(localStorage.getItem(LocalStorage.Id),drink?.idDrink)
         console.log('response :', response);        
         message.success("Cocktail added to Favorites");
+        onRefresh();
     }
     catch (error)
     {
@@ -105,7 +109,7 @@ if (abortAdd) {
         alert("Already in your favoriteslist")
 
     }
-}
+// }
 }
 
 const displayAddOrDeleteButton = () => {
@@ -120,6 +124,16 @@ const displayAddOrDeleteButton = () => {
     else
         return <></>
 }
+const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    getFavorites()
+    setRefreshing(false);
+  }, [refreshing]);
+
+  useEffect(()=>{
+    getFavorites()
+   return ()=>localStorage.setItem(LocalStorage.inFavoriteView, false)}
+   ,[onRefresh])
 
 return (
 <>

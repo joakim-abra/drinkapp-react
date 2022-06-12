@@ -1,16 +1,19 @@
 import LocalStorage from "../../../shared/storage/LocalStorage";
 import DrinkAPIService from "../../../shared/api/service/DrinkAPIService";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 import {Spinner, Button} from "react-bootstrap"
 import "./IngredientsView.css"
+import {DrinkCard} from "../../../components/drinkcard/DrinkCard"
 
 export const IngredientsView = () => {
     
     const [input, setInput] = useState("")
     const [serverData, setServerData] = useState([])
+    const [listData, setListData] = useState([])
     const [myList, setMyList] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
     const [buttonClicked, setButtonClicked] = useState(false)
+    const [refreshing, setRefreshing] = useState(false);
     const idArray =[]
 
     const findIngredient = async () => {
@@ -44,6 +47,7 @@ export const IngredientsView = () => {
            const {data} = await DrinkAPIService.addUserIngredient(localStorage.getItem(LocalStorage.Id),ingredientID);
             console.log(data)
             setIsLoaded(true)
+            onRefresh();
         }
         catch(error)
         {
@@ -55,6 +59,7 @@ export const IngredientsView = () => {
         try{
             const {data} = await DrinkAPIService.removeUserIngredient(localStorage.getItem(LocalStorage.Id),idIngredient)
             setIsLoaded(true)
+            onRefresh();
         }
         catch(error)
         {
@@ -62,15 +67,25 @@ export const IngredientsView = () => {
         }
     }
 
+    const searchFromList = async () => {
+      try{
+        const {data} = await DrinkAPIService.searchDrinksByMyIngredients(localStorage.getItem(LocalStorage.Id));
+         setListData(data.drinks)
+         console.log(data)
+         setIsLoaded(true)
+     }
+     catch(error){
+         console.log(error);
+     }
+    }
+
 
     const displaySearchResults = () => { return isLoaded ? ( 
         <div>{serverData.map((ingredient) => (
           <div className="box-result">
-            <p>
                 <h3>
                 {ingredient?.strIngredient}
                 </h3>
-          </p>
           <p>
           Ingredient ID: {ingredient?.id}
           </p>
@@ -94,11 +109,11 @@ export const IngredientsView = () => {
             <div> {myList.map((list) => (
               <div className="box-result">
                 {idArray.push(list?.cocktailDBid)}
-                <p>
+
                     <h3>
                     {list?.name}
                     </h3>
-              </p>
+
               <p>
                 CocktailDB ID: {list?.cocktailDBid}
               </p>
@@ -115,9 +130,31 @@ export const IngredientsView = () => {
               )
             };
 
+            const displaySearchResultsFromList = () => {
+              console.log('listData: ', listData)
+              return isLoaded ? (
+                <div className='flex-container'> {listData.map((drink) => (
+                  <div className="card-padding">
+                  <DrinkCard drink={drink} />
+                  </div>
+                    ))} 
+                  </div>  
+                  ) : (
+                    <div>
+                      <Spinner animation="border" />
+                    </div>
+                  )
+            }
+
+            const onRefresh = useCallback(async () => {
+              setRefreshing(true);
+              getIngredientList()
+              setRefreshing(false);
+            }, [refreshing]);
+
 useEffect(() => {
     getIngredientList()
-},[])
+},[onRefresh])
 
     return (
         <>
@@ -131,6 +168,13 @@ useEffect(() => {
               <Button variant="outline-dark" size="sm" className="add-btn" onClick={() => {findIngredient(input); setButtonClicked(true)}}>Search by name</Button>
               </div>
               {displaySearchResults()}
+          <div className="header-box">
+              <h1>Search for drinks by my ingredients</h1>
+              </div>
+              <div className="search-box">
+              <Button variant="outline-dark" size="sm" className="add-btn" onClick={() => {searchFromList(); setButtonClicked(true)}}>Search by ingredient list</Button>
+              </div>
+              {displaySearchResultsFromList()}
           </div>
           <div className="column">
             <div className="header-box">

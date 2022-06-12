@@ -1,5 +1,5 @@
 import './FavoriteView.css';
-import {useState, useContext,useEffect} from 'react';
+import {useState, useContext,useEffect,useCallback} from 'react';
 import LocalStorage from "../../../shared/storage/LocalStorage";
 import {Spinner,Button} from "react-bootstrap"
 import DrinkAPIService from "../../../shared/api/service/DrinkAPIService";
@@ -10,11 +10,9 @@ export const FavoriteView = () => {
 const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext);
 const [serverData, setServerData] = useState([]);
 const [isLoaded, setIsLoaded] = useState(false);
+const [refreshing, setRefreshing] = useState(false);
 
-useEffect(()=>{
- GetMyFavorites()
-return ()=>localStorage.setItem(LocalStorage.inFavoriteView, false)}
-,[])
+
 
 const GetMyFavorites = async ()=>{
     localStorage.setItem(LocalStorage.inFavoriteView, true);
@@ -45,6 +43,17 @@ const GetMyFavorites = async ()=>{
         </div>
       )
     };
+    
+    const onRefresh = useCallback(async () => {
+      setRefreshing(true);
+      GetMyFavorites()
+      setRefreshing(false);
+    }, [refreshing]);
+    
+    useEffect(()=>{
+     GetMyFavorites()
+    }
+    ,[onRefresh])
 
 return (
     <main>
