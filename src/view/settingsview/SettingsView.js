@@ -41,7 +41,9 @@ export const SettingsView = () => {
                 setBadSettings(true)
             }
         }
-       
+        const settingsstatus = () => {
+            return badsettings? <div> Incorrect change! try again! </div> : <></>
+          }
         
         
         return (<>
@@ -63,7 +65,7 @@ export const SettingsView = () => {
             <br/> 
             
         </div>
-         
+         {settingsstatus()}
         </>
     )
 }
