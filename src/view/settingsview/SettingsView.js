@@ -9,8 +9,9 @@ export const SettingsView = () => {
     const[authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
         const [username, setUsername] = useState("");
         const [password, setPassword] = useState("");
+        const [id, setId] = useState("")
         const [badsettings, setBadSettings] = useState();
-        const id = localStorage.getItem("Id")
+        
 
     const ChangeUserLogin = async () => {
         const newUser = {
@@ -19,9 +20,11 @@ export const SettingsView = () => {
             "Id": id
         }
         try{
+            setId(localStorage.getItem('Id'))
             const {data} = await DrinkAPIService.EditUser(newUser);
             localStorage.setItem(LocalStorage.Id, data?.id)
-            localStorage.setItem(LocalStorage.Id,username, data?.username)
+            localStorage.setItem(LocalStorage.Username, data?.username)
+            
             return true;
         }catch(error){
             console.log('error')
@@ -38,9 +41,7 @@ export const SettingsView = () => {
                 setBadSettings(true)
             }
         }
-        const NotSucces = () => {
-            return badsettings? <div>Cant change user!</div> : <></>
-        }
+       
         
         
         return (<>
@@ -57,12 +58,12 @@ export const SettingsView = () => {
           </label>
           
           <div className="div-btn">
-            <button className="btn-signin" onClick={(event) =>{event.preventDefault(); ChangeLogin();}}>Confirm</button>
+            <button className="btn-signin" onClick={(event) =>{event.preventDefault(); ChangeUserLogin();}}>Confirm</button>
             </div>
             <br/> 
             
         </div>
-          {NotSucces()}
+         
         </>
     )
 }

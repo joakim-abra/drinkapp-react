@@ -1,7 +1,7 @@
 import LocalStorage from "../../../shared/storage/LocalStorage";
 import DrinkAPIService from "../../../shared/api/service/DrinkAPIService";
 import { useState, useEffect } from "react";
-import {Spinner} from "react-bootstrap"
+import {Spinner, Button} from "react-bootstrap"
 import "./IngredientsView.css"
 
 export const IngredientsView = () => {
@@ -78,7 +78,7 @@ export const IngredientsView = () => {
             CocktailDB ID: {ingredient?.idIngredient}
           </p>
           <div>
-            <button onClick={()=>{addIngredient(ingredient.id); setButtonClicked(true)}}>Add</button>
+            <Button variant="outline-dark" onClick={()=>{addIngredient(ingredient.id); setButtonClicked(true)}}>Add</Button>
           </div>
           </div>
             ))} 
@@ -103,7 +103,7 @@ export const IngredientsView = () => {
                 CocktailDB ID: {list?.cocktailDBid}
               </p>
               <div>
-                <button onClick={()=>{deleteFromList(list.cocktailDBid); setButtonClicked(true)}}>Delete</button>
+                <Button variant="outline-dark" onClick={()=>{deleteFromList(list.cocktailDBid); setButtonClicked(true)}}>Delete</Button>
               </div>
               </div>
                 ))} 
@@ -123,13 +123,20 @@ useEffect(() => {
         <>
         <div className="row">
           <div className="column">
+            <div className="header-box">
               <h1>Search ingredients</h1>
-              <input placeholder="Search for ingredient.." onChange={(event) => setInput(event.target.value)}/>
-              <button onClick={() => {findIngredient(input); setButtonClicked(true)}}>Search by name</button>
+              </div>
+              <div className="search-box">
+              <input placeholder="Search for ingredient.." onChange={(event) => setInput(event.target.value)}/><br />
+              <Button variant="outline-dark" size="sm" className="add-btn" onClick={() => {findIngredient(input); setButtonClicked(true)}}>Search by name</Button>
+              </div>
               {displaySearchResults()}
           </div>
           <div className="column">
+            <div className="header-box">
         <h1>My ingredients list</h1>
+        </div>
+        <div className="search-box"></div>
         {displayStoredList()}
         </div>
       {console.log(idArray)}
