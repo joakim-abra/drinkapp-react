@@ -129,7 +129,7 @@ return (
             <Card.Img variant="top" src={drink?.strDrinkThumb} alt="Cocktail pic" className="img-card" />
             <Card.Body className="card-bg">
                 <Card.Title className="card-adjust">{drink?.strDrink}</Card.Title>
-                <Button variant="outline-primary" onClick={handleShow}>View</Button>
+                <Button variant="outline-dark" size="sm" onClick={handleShow}>View</Button>
              </Card.Body>
          </Card> 
     </div>
