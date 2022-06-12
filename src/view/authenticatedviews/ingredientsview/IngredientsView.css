@@ -4,12 +4,22 @@
   
 .row {
     display: flex;
-    background-image:url("https://img.koket.se/standard-mega/clover-club-cocktail.png.webp");
-    background-size: contain;
   }
-  
-  .column {
-    flex: 50%;
+
+  .column1 {
+    flex: 33%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .column2 {
+    flex: 33%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .column3 {
+    flex: 33%;
     padding: 10px;
     text-align: center;
   }
