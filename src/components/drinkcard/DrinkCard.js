@@ -10,7 +10,7 @@ import RoutingPath from "../../routes/RoutingPath"
 import DrinkAPIService from "../../shared/api/service/DrinkAPIService";
 
 export const DrinkCard = ({drink}) => {
-
+const idList = [];
 const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
@@ -20,6 +20,7 @@ const URL = "http://localhost:3000";
 
 const [serverData, setServerData] = useState([]);
 
+
 const getFavorites = async ()=>{
     localStorage.setItem(LocalStorage.inFavoriteView, true);
     {/*setIsLoaded(false);*/}
@@ -27,7 +28,7 @@ const getFavorites = async ()=>{
         console.log(localStorage.getItem("Id"))
       const{data} = await DrinkAPIService.getFavorites(localStorage.getItem(LocalStorage.Id));
       console.log(data)
-      setServerData(data?.favorites.idDrink)
+      setServerData(data?.favorites)
       console.log(serverData)
       {/*setIsLoaded(true);*/}
     }
@@ -43,6 +44,7 @@ const checkDuplicates = () => {
     getFavorites()
 
     {serverData.map(serverData => {
+        idList.push(serverData.idDrink)
       setFavoriteDrinkId(serverData)
       {console.log(favoriteDrinkId)}
       {console.log(serverData)}
@@ -77,11 +79,15 @@ const deleteFavorite = async () =>{
     }
 }
 
+const displayErrorMessage = () => {
+    message.error("Cocktail already in favorites");
+}
+
 const [addDrinkId, setAddDrinkId] = useState();
 
 const addFavorite = async () =>{
 setAddDrinkId(drink?.idDrink)
-console.log(drink?.idDrink)
+console.log('drink.idDrink', drink?.idDrink)
 checkDuplicates()
 if (abortAdd) {
     alert("Already in Favorites")
@@ -90,12 +96,14 @@ if (abortAdd) {
     try
     {
         const response = await DrinkApiService.AddFavorite(localStorage.getItem(LocalStorage.Id),drink?.idDrink)
-        console.log(response);        
+        console.log('response :', response);        
         message.success("Cocktail added to Favorites");
     }
     catch (error)
     {
-        console.log(error)
+        console.log('error message:', error)
+        alert("Already in your favoriteslist")
+
     }
 }
 }
