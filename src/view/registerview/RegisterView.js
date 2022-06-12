@@ -28,6 +28,7 @@ export const RegisterView = () => {
       {
         setAuthenticatedUser(true)
         localStorage.setItem(LocalStorage.Id, data?.id)
+        localStorage.setItem(LocalStorage.Id, data?.username)
         console.log(data)
         console.log('autUser', authenticatedUser)
         return true;
