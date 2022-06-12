@@ -31,7 +31,7 @@ export const NavigationApp = () => {
          const LoggedIn = () => {
       if (authenticatedUser) {
         return (
-          <NavDropdown className="nav-dropdown" id="collasible-nav-dropdown" title="User">
+          <NavDropdown className="nav-dropdown" id="collapsible-nav-dropdown" title={localStorage.getItem(LocalStorage.Username)}>
           <NavDropdown.Item href="/settings">Settings</NavDropdown.Item>
           <NavDropdown.Item  href="/" onClick={() => logOut()}>Log out</NavDropdown.Item> 
            
@@ -39,7 +39,7 @@ export const NavigationApp = () => {
           );
         } else {
           return (
-            <NavDropdown className="nav-dropdown" id="collasible-nav-dropdown" title="Guest">
+            <NavDropdown className="nav-dropdown" id="collapsible-nav-dropdown" title="Options">
           <NavDropdown.Item href="/signin">Log in</NavDropdown.Item>
           <NavDropdown.Item href="/register">Register</NavDropdown.Item>
           </NavDropdown>
@@ -67,8 +67,6 @@ export const NavigationApp = () => {
               <Nav className="nav-right">
               {LoggedIn()}
               </Nav>
-
-              {Profile()}
             </Navbar>
           </div>
         );
