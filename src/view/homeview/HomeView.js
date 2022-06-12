@@ -95,7 +95,7 @@ const displayData = () => { return isLoaded ? (
       ))} 
     </div>  
     ) : (
-      <div>
+      <div className="display-spinner">
         <Spinner animation="border" />
       </div>
     )
